@@ -9,7 +9,6 @@ on:
         debug:
           type: boolean
           default: false
-    push:
 jobs:
     echo-data:
         env:
