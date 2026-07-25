@@ -1,0 +1,13 @@
+name: "04 - Using Actions"
+on:
+  push:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Checkout code"
+              uses: actions/checkout@v7
+            - name: "Printing Folders"
+              run: |
+                echo "Printing the folders in the repository"
+                ls -la
