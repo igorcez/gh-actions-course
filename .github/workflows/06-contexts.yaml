@@ -20,7 +20,7 @@ jobs:
             - name: "Display Information"
               run: |
                   echo "Event name: ${{ github.event_name }}"
-                  echo "Ref: ${{ github.event.ref }}"
+                  echo "Ref: ${{ github.ref }}"
                   echo "SHA: ${{ github.sha }}"
                   echo "Actor: ${{ github.actor }}"
                   echo "Workflow: ${{ github.workflow }}"
