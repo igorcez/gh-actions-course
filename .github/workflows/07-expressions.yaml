@@ -1,5 +1,7 @@
 name: "07 - Using Expressions"
-run-name: "07 - Using Expressions | DEBUG - ${{ inputs.debug == true && 'ON' || 'OFF' }}"
+run-name: "07 - Using Expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}"
+env:
+    MY_VAR_WITH_DEFAULT: "${{ vars.MY_VAR || 'default-value' }}"
 on:
     push:
     workflow_dispatch:
@@ -12,7 +14,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "[debug] Print start-up data"
-              if: ${{ inputs.debug == true }}
+              if: ${{ inputs.debug }}
               run: |
                   echo "Triggered by: ${{ github.event_name }}"
                   echo "Branch: ${{ github.ref }}"
@@ -20,7 +22,7 @@ jobs:
                   echo "Runner OS: ${{ runner.os }}"
             
             - name: "[debug] Print when triggered from main"
-              if: ${{ inputs.debug == true && github.ref == 'refs/heads/main' }}
+              if: ${{ inputs.debug && github.ref == 'refs/heads/main' }}
               run: |
                 echo "I was triggered from main."
             
