@@ -30,7 +30,7 @@ jobs:
             - name: "Step with mistake"
               id: mistake
               run: |
-                echo "mistake=true" >> $GITHUB_OUTPUT
+                echo "mistake=true" > $GITHUB_OUTPUT
                 cat "$GITHUB_OUTPUT"
     
     deploy:
