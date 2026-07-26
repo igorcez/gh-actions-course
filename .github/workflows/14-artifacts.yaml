@@ -69,5 +69,5 @@ jobs:
             
             - name: "Show folder structure of downloaded artifacts"
               run: |
-                  pwd
-                  ls -la
+                  ls -la coverage
+                  ls -la build
