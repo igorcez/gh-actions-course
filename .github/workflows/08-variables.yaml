@@ -1,6 +1,6 @@
 name: "08 - Using Variables"
 on:
-    push:
+    #push:
     workflow_dispatch:
 env:
     WORKFLOW_VAR: "I am a workflow env var"
@@ -51,7 +51,7 @@ jobs:
         steps:
             - name: "Print Undefined Variables"
               run: |
-                  echo "Org var: ${{ vars.UNDEFINED_VAR_WITH_DEFAULT }}"
+                  echo "Org var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"
 
 
 
