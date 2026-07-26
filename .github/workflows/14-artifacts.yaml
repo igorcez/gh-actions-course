@@ -61,6 +61,12 @@ jobs:
                 name: ${{ env.build-artifact-key }}
                 path: build
             
+            - name: "Download test coverage files"
+              uses: actions/download-artifact@v8
+              with:
+                name: ${{ env.test-coverage-key }}
+                path: coverage
+            
             - name: "Show folder structure of downloaded artifacts"
               run: |
                   pwd
