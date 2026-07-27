@@ -63,7 +63,9 @@ jobs:
                   - color: red
                     shape: triangle
                 exclude:
-                  - opacity: 75
+                  - color: green
+                    shape: circle
+                    size: medium
         steps:
             - name: "Print matrix values"
               run: |
