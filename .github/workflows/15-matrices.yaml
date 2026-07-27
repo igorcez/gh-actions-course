@@ -40,7 +40,7 @@ jobs:
     #             echo "Uploading test results for OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
     
     include-example:
-        name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}
+        name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}-${{ matrix.opacity }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -55,6 +55,7 @@ jobs:
                     - small
                     - large
                 include:
+                    - opacity: 50
                     - color: red
                       shape: triangle
         steps:
@@ -63,3 +64,4 @@ jobs:
                 echo "Color: ${{ matrix.color }}"
                 echo "Shape: ${{ matrix.shape }}"
                 echo "Size: ${{ matrix.size }}" 
+                echo "Opacity: ${{ matrix.opacity }}" 
