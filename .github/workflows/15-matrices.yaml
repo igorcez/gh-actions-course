@@ -2,39 +2,64 @@ name: 15 - Working with Matrices
 on:
     workflow_dispatch:
 jobs:
-    backwards-compatibility:
-        name: ${{ matrix.os }}-${{ matrix.node-version }}
-        runs-on: ${{ matrix.os }}
+    # backwards-compatibility:
+    #     name: ${{ matrix.os }}-${{ matrix.node-version }}
+    #     runs-on: ${{ matrix.os }}
+    #     strategy:
+    #         fail-fast: false
+    #         matrix:
+    #             node-version: [24.x, 26.x]
+    #             os:
+    #                 - ubuntu-latest
+    #                 - windows-latest
+    #             include:
+    #                 - os: ubuntu-latest
+    #                   node-version: 22.x
+    #                 - os: ubuntu-latest
+    #                   node-version: 26.x
+    #                   tag: experimental
+    #     steps:
+    #         - name: "Set up Node.js"
+    #           uses: actions/setup-node@v6
+    #           with:
+    #               node-version: ${{ matrix.node-version }}
+            
+    #         - name: "Fail if experimental"
+    #           if: ${{ matrix.tag == 'experimental' }}
+    #           run: |
+    #               echo "This is an experimental build and will fail."
+    #               exit 1
+
+    #         - name: "Perform some tests"
+    #           run: |
+    #             sleep 10
+    #             echo "Running tests on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
+            
+    #         - name: "Upload test results"
+    #           run: |
+    #             echo "Uploading test results for OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
+    
+    include-example:
+        name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}
+        runs-on: ubuntu-latest
         strategy:
             fail-fast: false
             matrix:
-                node-version: [24.x, 26.x]
-                os:
-                    - ubuntu-latest
-                    - windows-latest
+                color:
+                    - red
+                    - green
+                shape:
+                    - circle
+                    - square
+                size:
+                    - small
+                    - large
                 include:
-                    - os: ubuntu-latest
-                      node-version: 24.x
-                    - os: ubuntu-latest
-                      node-version: 26.x
-                      tag: experimental
+                    - color: red
+                      shape: triangle
         steps:
-            - name: "Set up Node.js"
-              uses: actions/setup-node@v6
-              with:
-                  node-version: ${{ matrix.node-version }}
-            
-            - name: "Fail if experimental"
-              if: ${{ matrix.tag == 'experimental' }}
+            - name: "Print matrix values"
               run: |
-                  echo "This is an experimental build and will fail."
-                  exit 1
-
-            - name: "Perform some tests"
-              run: |
-                sleep 10
-                echo "Running tests on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
-            
-            - name: "Upload test results"
-              run: |
-                echo "Uploading test results for OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
+                echo "Color: ${{ matrix.color }}"
+                echo "Shape: ${{ matrix.shape }}"
+                echo "Size: ${{ matrix.size }}" 
