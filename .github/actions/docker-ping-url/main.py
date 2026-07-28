@@ -8,7 +8,7 @@ def ping_url (url, delay, max_trials):
         resp = requests.get(f"{url}", timeout=5)
         if resp.status_code >= 400:
             print("error status:", resp.status_code)
-        print(f"STATUS CODE: ${resp.status_code}")
+        print(f"STATUS CODE: {resp.status_code}")
         if resp.status_code == 200:
             return True
         else:
