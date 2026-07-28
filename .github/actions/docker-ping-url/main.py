@@ -2,9 +2,6 @@ import requests
 import time
 import os
 
-if __name__ == "__main__":
-    run()
-
 def ping_url (url, delay, max_trials):
     number_of_trials = 0
     while number_of_trials < max_trials:
@@ -26,8 +23,8 @@ def run():
     if result == False:
         raise RuntimeError("something went wrong") 
 
+if __name__ == "__main__":
+    run()
 
-
-        
 
 
