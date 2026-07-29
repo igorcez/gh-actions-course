@@ -42,9 +42,9 @@ def run():
 
     result = ping_url(url, delay, max_trials)
 
-    print(os.getenv("GITHUB_OUTPUT"))
+    print(result)
 
-    with open("$GITHUB_OUTPUT", "a", encoding="utf-8") as f:
+    with open(os.getenv("GITHUB_OUTPUT"), "a", encoding="utf-8") as f:
         print(f"url-reachable={result}", file=f)
 
     if not result:
