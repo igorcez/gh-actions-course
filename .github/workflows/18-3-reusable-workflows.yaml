@@ -8,4 +8,6 @@ jobs:
             target-directory: "anything"
     e2e-tests:
         needs: deploy
-        uses: igorcez/github-actions-course-example-e2e/.github/workflows/e2e.yaml@<branch, tag, or sha commit>
+        uses: "igorcez/github-actions-course-example-e2e/.github/workflows/e2e.yaml@refs/heads/main"
+        secrets:
+            access-token: ${{ secrets.GH_TOKEN }}
